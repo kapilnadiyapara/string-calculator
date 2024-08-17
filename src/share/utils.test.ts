@@ -20,4 +20,9 @@ describe("String Calculator - add function", () => {
     expect(() => add('1,-5,3')).toThrow('Negative inputString not allowed: -5');
     expect(() => add('1,-6,-2')).toThrow('Negative inputString not allowed: -6,-2');
   });
+
+  test('should support different delimiters', () => {
+    expect(add('//;\n1;8')).toBe(9);
+    expect(add('//-\n2-5-3')).toBe(10);
+  });
 });
