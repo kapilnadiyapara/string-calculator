@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
+import StringCalculator from './StringCalculator';
 
 function App() {
   return (
    <div>
-      App
+      <StringCalculator />
     </div>
   );
 }
