@@ -1,8 +1,10 @@
 import { FC, useCallback, useEffect, useState } from "react";
 import Display from "./share/component/Display";
+import { add } from "./share/utils";
 
 const StringCalculator: FC = () => {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState<string>("");
+  const [result, setResult] = useState<number>(0);
 
   const onInputValueChange = useCallback(
     (ev: React.ChangeEvent<HTMLInputElement>) => {
@@ -11,14 +13,19 @@ const StringCalculator: FC = () => {
     []
   );
 
+  useEffect(() => {
+    const answer = add(inputValue);
+    setResult(answer);
+  }, [inputValue]);
+
   return (
     <div>
       <div>
-        Enter Value{" "}
+        Enter Value
         <input type="text" value={inputValue} onChange={onInputValueChange} />
       </div>
       <div>
-        <Display value={0} />
+        <Display value={result} />
       </div>
     </div>
   );

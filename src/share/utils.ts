@@ -1,8 +1,8 @@
 export const add = (inputString: string): number => {
-  let result = 0;
   if (inputString === "") {
-    return result;
+    return 0;
   }
+
   let delimiter = /,|\n/;
   if (inputString.startsWith("//")) {
     const parts = inputString.split("\n");
@@ -10,7 +10,7 @@ export const add = (inputString: string): number => {
     inputString = parts[1];
   }
 
-  const numArray = inputString.split(delimiter).map(Number);
+  const numArray = inputString.split(delimiter).map((item) => parseInt(item));
   const negatives = numArray.filter((n) => n < 0);
 
   if (negatives.length) {
