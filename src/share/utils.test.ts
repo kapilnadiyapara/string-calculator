@@ -15,4 +15,9 @@ describe("String Calculator - add function", () => {
   test('should handle new lines as delimiters', () => {
     expect(add('1\n2,5')).toBe(8);
   });
+
+  test('should throw an exception for negative inputString', () => {
+    expect(() => add('1,-5,3')).toThrow('Negative inputString not allowed: -5');
+    expect(() => add('1,-6,-2')).toThrow('Negative inputString not allowed: -6,-2');
+  });
 });
